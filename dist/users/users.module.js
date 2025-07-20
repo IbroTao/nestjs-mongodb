@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const users_schema_1 = require("../schemas/users.schema");
 const users_service_1 = require("./users.service");
+const users_controller_1 = require("./users/users.controller");
 let UserModule = class UserModule {
 };
 exports.UserModule = UserModule;
@@ -23,6 +24,7 @@ exports.UserModule = UserModule = __decorate([
                 }])
         ],
         providers: [users_service_1.UserService],
+        controllers: [users_controller_1.UsersController],
     })
 ], UserModule);
 //# sourceMappingURL=users.module.js.map
