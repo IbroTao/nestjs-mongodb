@@ -3,5 +3,4 @@
 export class CreateUserDto {
     username: string;
     displayName?: string;
-    avatarUrl?: string;
 }
