@@ -21,7 +21,10 @@ let UserService = class UserService {
     constructor(userModel) {
         this.userModel = userModel;
     }
-    createUser() { }
+    createUser(createUserDto) {
+        const newUser = new this.userModel(createUserDto);
+        return newUser.save();
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([
