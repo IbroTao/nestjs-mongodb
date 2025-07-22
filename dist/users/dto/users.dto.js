@@ -21,6 +21,7 @@ __decorate([
 ], CreateUserDto.prototype, "username", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "displayName", void 0);
 //# sourceMappingURL=users.dto.js.map
