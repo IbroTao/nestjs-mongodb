@@ -24,6 +24,6 @@ export class CreateUserDto {
     @IsOptional()
     displayName?: string;
 
-
+    @IsOptional()
     settings?: CreateUserSettingsDto
 }   

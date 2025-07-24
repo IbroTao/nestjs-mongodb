@@ -11,7 +11,8 @@ import { UpdateUserDto } from "./dto/updateUser.dto";
 export class UserService {
     constructor( @InjectModel(User.name) private userModel: Model<User>) {}
     
-    createUser(createUserDto: CreateUserDto) {
+    createUser({settings, ...createUserDto}: CreateUserDto) {
+        if(settings) {}
         const newUser = new this.userModel(createUserDto);
         return newUser.save()
     }
