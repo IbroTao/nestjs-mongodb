@@ -9,8 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateUserDto = void 0;
+exports.CreateUserDto = exports.CreateUserSettingsDto = void 0;
+const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
+class CreateUserSettingsDto {
+}
+exports.CreateUserSettingsDto = CreateUserSettingsDto;
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsBoolean)(),
+    __metadata("design:type", Boolean)
+], CreateUserSettingsDto.prototype, "receiveSMS", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsBoolean)(),
+    __metadata("design:type", Boolean)
+], CreateUserSettingsDto.prototype, "receiveNotifications", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Boolean)
+], CreateUserSettingsDto.prototype, "receiveEmails", void 0);
 class CreateUserDto {
 }
 exports.CreateUserDto = CreateUserDto;
@@ -24,4 +42,10 @@ __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "displayName", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.ValidateNested)(),
+    (0, class_transformer_1.Type)(() => CreateUserSettingsDto),
+    __metadata("design:type", CreateUserSettingsDto)
+], CreateUserDto.prototype, "settings", void 0);
 //# sourceMappingURL=CreateUser.dto.js.map

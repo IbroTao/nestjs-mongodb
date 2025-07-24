@@ -17,11 +17,22 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const users_schema_1 = require("../schemas/users.schema");
+const userSettings_schema_1 = require("../schemas/userSettings.schema");
 let UserService = class UserService {
-    constructor(userModel) {
+    constructor(userModel, userSettingsModel) {
         this.userModel = userModel;
+        this.userSettingsModel = userSettingsModel;
     }
-    createUser(createUserDto) {
+    async createUser({ settings, ...createUserDto }) {
+        if (settings) {
+            const newSettings = new this.userSettingsModel(settings);
+            const saveNewSettings = await newSettings.save();
+            const newUser = new this.userModel({
+                ...createUserDto,
+                settings: saveNewSettings._id,
+            });
+            return newUser.save();
+        }
         const newUser = new this.userModel(createUserDto);
         return newUser.save();
     }
@@ -42,6 +53,7 @@ exports.UserService = UserService;
 exports.UserService = UserService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(users_schema_1.User.name)),
-    __metadata("design:paramtypes", [mongoose_2.Model])
+    __param(1, (0, mongoose_1.InjectModel)(userSettings_schema_1.UserSettings.name)),
+    __metadata("design:paramtypes", [mongoose_2.Model, mongoose_2.Model])
 ], UserService);
 //# sourceMappingURL=users.service.js.map

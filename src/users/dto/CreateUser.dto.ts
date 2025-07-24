@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier*/
 
+import { Type } from "class-transformer";
 import { IsBoolean, IsNotEmpty, IsOptional, IsString, ValidateNested } from "class-validator";
 
 export class CreateUserSettingsDto {
@@ -12,7 +13,7 @@ export class CreateUserSettingsDto {
     receiveNotifications?: boolean;
 
     @IsOptional()
-    @IsBoolean()
+    // @IsBoolean()
     receiveEmails?: boolean;
 }
 export class CreateUserDto {
@@ -26,5 +27,6 @@ export class CreateUserDto {
 
     @IsOptional()
     @ValidateNested()
+    @Type(() => CreateUserSettingsDto)
     settings?: CreateUserSettingsDto
 }   
