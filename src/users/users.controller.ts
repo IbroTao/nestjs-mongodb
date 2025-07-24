@@ -20,7 +20,7 @@ export class UserController {
         return this.userService.getUsers();
     }
 
-    @Get()
+    @Get(':id')
     async fetchUserById(@Param('id') id: string) {
         const findUser = await this.userService.getUserById(id);
         if (!findUser) throw new HttpException('User not found!', 404);
