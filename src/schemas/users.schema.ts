@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier*/
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import mongoose from "mongoose";
+import { UserSettings } from "./userSettings.schema";
 
 
 @Schema()
@@ -11,8 +13,11 @@ export class User {
     displayName?: string;
 
 
-    @Prop()
+    @Prop({required: false})
     avatarUrl?: string;
+
+    @Prop({type: mongoose.Types.ObjectId, ref: 'UserSettings'})
+    settings?: UserSettings;
 }
 
 
