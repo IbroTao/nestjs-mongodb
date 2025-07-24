@@ -2,6 +2,11 @@
 
 import { IsNotEmpty, IsOptional, IsString } from "class-validator";
 
+export class CreateUserSettingsDto {
+    receiveSMS?: boolean;
+    receiveNotifications?: boolean;
+    receiveEmails?: boolean;
+}
 export class CreateUserDto {
     @IsNotEmpty()
     @IsString()
@@ -10,4 +15,7 @@ export class CreateUserDto {
     @IsString()
     @IsOptional()
     displayName?: string;
+
+
+    settings?: CreateUserSettingsDto
 }   
