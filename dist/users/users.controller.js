@@ -54,7 +54,9 @@ let UserController = class UserController {
         if (!isValid)
             throw new common_1.HttpException('User not found', 404);
         const deletedUser = await this.userService.deleteUser(id);
-        console.log(deletedUser);
+        if (!deletedUser)
+            throw new common_1.HttpException('User not found', 404);
+        return;
     }
 };
 exports.UserController = UserController;

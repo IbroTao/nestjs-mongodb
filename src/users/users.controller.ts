@@ -46,6 +46,7 @@ export class UserController {
         const isValid = mongoose.Types.ObjectId.isValid(id);
         if(!isValid) throw new HttpException('User not found', 404);
         const deletedUser = await this.userService.deleteUser(id);
-        console.log(deletedUser);
+        if(!deletedUser) throw new HttpException('User not found', 404);
+        return;
     }
 }
