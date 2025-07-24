@@ -1,25 +1,27 @@
 import { UserService } from "./users.service";
-import { CreateUserDto } from "./dto/users.dto";
+import { CreateUserDto } from "./dto/CreateUser.dto";
+import mongoose from "mongoose";
 export declare class UserController {
     private userService;
     constructor(userService: UserService);
-    createUser(createUserDto: CreateUserDto): Promise<import("mongoose").Document<unknown, {}, import("../schemas/users.schema").User, {}> & import("../schemas/users.schema").User & {
-        _id: import("mongoose").Types.ObjectId;
+    createUser(createUserDto: CreateUserDto): Promise<mongoose.Document<unknown, {}, import("../schemas/users.schema").User, {}> & import("../schemas/users.schema").User & {
+        _id: mongoose.Types.ObjectId;
     } & {
         __v: number;
     }>;
-    getAllUsers(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, import("../schemas/users.schema").User, {}> & import("../schemas/users.schema").User & {
-        _id: import("mongoose").Types.ObjectId;
+    getAllUsers(): mongoose.Query<(mongoose.Document<unknown, {}, import("../schemas/users.schema").User, {}> & import("../schemas/users.schema").User & {
+        _id: mongoose.Types.ObjectId;
     } & {
         __v: number;
-    })[], import("mongoose").Document<unknown, {}, import("../schemas/users.schema").User, {}> & import("../schemas/users.schema").User & {
-        _id: import("mongoose").Types.ObjectId;
+    })[], mongoose.Document<unknown, {}, import("../schemas/users.schema").User, {}> & import("../schemas/users.schema").User & {
+        _id: mongoose.Types.ObjectId;
     } & {
         __v: number;
     }, {}, import("../schemas/users.schema").User, "find", {}>;
-    fetchUserById(id: string): Promise<import("mongoose").Document<unknown, {}, import("../schemas/users.schema").User, {}> & import("../schemas/users.schema").User & {
-        _id: import("mongoose").Types.ObjectId;
+    fetchUserById(id: string): Promise<mongoose.Document<unknown, {}, import("../schemas/users.schema").User, {}> & import("../schemas/users.schema").User & {
+        _id: mongoose.Types.ObjectId;
     } & {
         __v: number;
     }>;
+    : any;
 }

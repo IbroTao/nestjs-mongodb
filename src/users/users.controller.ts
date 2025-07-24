@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier*/
-import { Body, Controller, Post, UsePipes, ValidationPipe, Get, Param, HttpException } from "@nestjs/common";
+import { Body, Controller, Post, UsePipes, ValidationPipe, Get, Param, HttpException, Patch } from "@nestjs/common";
 import { UserService } from "./users.service";
-import { CreateUserDto } from "./dto/users.dto";
-
+import { CreateUserDto } from "./dto/CreateUser.dto";
+import mongoose from "mongoose";
 
 @Controller('users')
 export class UserController {
@@ -22,8 +22,16 @@ export class UserController {
 
     @Get(':id')
     async fetchUserById(@Param('id') id: string) {
+        const isValid = mongoose.Types.ObjectId.isValid(id);
+        if(!isValid) throw new HttpException('User not found', 404)
         const findUser = await this.userService.getUserById(id);
         if (!findUser) throw new HttpException('User not found!', 404);
         return findUser;
+    }
+
+    @Patch(':id') {
+        updateUser() {
+
+        }
     }
 }

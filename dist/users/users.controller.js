@@ -15,7 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
 const users_service_1 = require("./users.service");
-const users_dto_1 = require("./dto/users.dto");
+const CreateUser_dto_1 = require("./dto/CreateUser.dto");
+const mongoose_1 = require("mongoose");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -27,6 +28,9 @@ let UserController = class UserController {
         return this.userService.getUsers();
     }
     async fetchUserById(id) {
+        const isValid = mongoose_1.default.Types.ObjectId.isValid(id);
+        if (!isValid)
+            throw new common_1.HttpException('User not found', 404);
         const findUser = await this.userService.getUserById(id);
         if (!findUser)
             throw new common_1.HttpException('User not found!', 404);
@@ -39,7 +43,7 @@ __decorate([
     (0, common_1.UsePipes)(new common_1.ValidationPipe()),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [users_dto_1.CreateUserDto]),
+    __metadata("design:paramtypes", [CreateUser_dto_1.CreateUserDto]),
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "createUser", null);
 __decorate([
@@ -55,8 +59,17 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "fetchUserById", null);
+__decorate([
+    (0, common_1.Patch)(':id'),
+    __metadata("design:type", Object)
+], UserController.prototype, "", void 0);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [users_service_1.UserService])
 ], UserController);
+{
+    updateUser();
+    {
+    }
+}
 //# sourceMappingURL=users.controller.js.map

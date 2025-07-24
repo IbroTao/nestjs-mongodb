@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
+import { CreateUserDto } from "../users/dto/CreateUser.dto";
 import { User } from "src/schemas/users.schema";
-import { CreateUserDto } from "./dto/users.dto";
 export declare class UserService {
     private userModel;
     constructor(userModel: Model<User>);
