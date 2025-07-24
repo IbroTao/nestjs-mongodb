@@ -23,7 +23,10 @@ let UserController = class UserController {
         this.userService = userService;
     }
     createUser(createUserDto) {
-        return this.userService.createUser(createUserDto);
+        const newUser = this.userService.createUser(createUserDto);
+        if (!newUser)
+            throw new common_1.HttpException('Error', 404);
+        return newUser;
     }
     getAllUsers() {
         return this.userService.getUsers();
@@ -37,11 +40,13 @@ let UserController = class UserController {
             throw new common_1.HttpException('User not found!', 404);
         return findUser;
     }
-    updateUser(id, updateUserDto) {
+    async updateUser(id, updateUserDto) {
         const isValid = mongoose_1.default.Types.ObjectId.isValid(id);
         if (!isValid)
             throw new common_1.HttpException('Invalid ID', 404);
-        return this.userService.updateUser(id, updateUserDto);
+        const updatedUser = this.userService.updateUser(id, updateUserDto);
+        if (!)
+            ;
     }
 };
 exports.UserController = UserController;
@@ -73,7 +78,7 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, updateUser_dto_1.UpdateUserDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "updateUser", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),

@@ -12,8 +12,9 @@ export class UserController {
     @Post('post')
     @UsePipes(new ValidationPipe())
     createUser(@Body() createUserDto: CreateUserDto) {
-        // console.log(createUserDto);
-        return this.userService.createUser(createUserDto)
+        const newUser = this.userService.createUser(createUserDto);
+        if(!newUser) throw new HttpException('Error', 404);
+        return newUser;
     }
 
     @Get('all')
@@ -31,10 +32,11 @@ export class UserController {
     }
 
     @Patch(':id') 
-    @UsePipes(new ValidationPipe())
-    updateUser(@Param('id') id:string, @Body() updateUserDto: UpdateUserDto) {
-        const isValid = mongoose.Types.ObjectId.isValid(id);
+    @UsePipes(new ValidationPipe()) // this is to validate that te user send in the details stipulated in the schema.
+    async updateUser(@Param('id') id:string, @Body() updateUserDto: UpdateUserDto) { 
+        const isValid = mongoose.Types.ObjectId.isValid(id); // ensure that the id be passed should not just be any random string be must be an instance of Mongoose ObjectId type.
         if(!isValid) throw new HttpException('Invalid ID', 404)
-        return this.userService.updateUser(id, updateUserDto);
+        const updatedUser = this.userService.updateUser(id, updateUserDto);
+        if(!)
     }
 }

@@ -24,13 +24,5 @@ export declare class UserController {
     } & {
         __v: number;
     }>;
-    updateUser(id: string, updateUserDto: UpdateUserDto): mongoose.Query<mongoose.Document<unknown, {}, import("../schemas/users.schema").User, {}> & import("../schemas/users.schema").User & {
-        _id: mongoose.Types.ObjectId;
-    } & {
-        __v: number;
-    }, mongoose.Document<unknown, {}, import("../schemas/users.schema").User, {}> & import("../schemas/users.schema").User & {
-        _id: mongoose.Types.ObjectId;
-    } & {
-        __v: number;
-    }, {}, import("../schemas/users.schema").User, "findOneAndUpdate", {}>;
+    updateUser(id: string, updateUserDto: UpdateUserDto): Promise<void>;
 }
