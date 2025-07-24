@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier*/
-import { Prop, Schema } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
 
 @Schema()
@@ -13,3 +13,5 @@ export class UserSettings {
     @Prop({required: false})
     receiveSMS?: boolean;
 }
+
+export const userSettings = SchemaFactory.createForClass(UserSettings);
