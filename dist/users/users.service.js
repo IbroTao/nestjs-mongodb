@@ -25,6 +25,9 @@ let UserService = class UserService {
         const newUser = new this.userModel(createUserDto);
         return newUser.save();
     }
+    getUsers() {
+        return this.userModel.find();
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([
