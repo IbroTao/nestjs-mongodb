@@ -37,6 +37,7 @@ export class UserController {
         const isValid = mongoose.Types.ObjectId.isValid(id); // ensure that the id be passed should not just be any random string be must be an instance of Mongoose ObjectId type.
         if(!isValid) throw new HttpException('Invalid ID', 404)
         const updatedUser = this.userService.updateUser(id, updateUserDto);
-        if(!)
+        if(!updatedUser) throw new HttpException('User not found', 404);
+        return updatedUser;
     }
 }

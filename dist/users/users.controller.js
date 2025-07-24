@@ -45,8 +45,9 @@ let UserController = class UserController {
         if (!isValid)
             throw new common_1.HttpException('Invalid ID', 404);
         const updatedUser = this.userService.updateUser(id, updateUserDto);
-        if (!)
-            ;
+        if (!updatedUser)
+            throw new common_1.HttpException('User not found', 404);
+        return updatedUser;
     }
 };
 exports.UserController = UserController;
