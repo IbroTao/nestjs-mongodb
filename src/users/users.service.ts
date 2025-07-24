@@ -19,7 +19,8 @@ export class UserService {
             const newUser = new this.userModel({
                 ...createUserDto,
                 settings: saveNewSettings._id,
-            })
+            });
+            return newUser.save();
         }
         const newUser = new this.userModel(createUserDto);
         return newUser.save()
