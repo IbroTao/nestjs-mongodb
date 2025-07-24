@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier*/
 
-import { IsBoolean, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsOptional, IsString, ValidateNested } from "class-validator";
 
 export class CreateUserSettingsDto {
     @IsOptional()
@@ -25,5 +25,6 @@ export class CreateUserDto {
     displayName?: string;
 
     @IsOptional()
+    @ValidateNested()
     settings?: CreateUserSettingsDto
 }   

@@ -6,13 +6,21 @@ import { Model } from "mongoose";
 import { CreateUserDto } from "../users/dto/CreateUser.dto"
 import { User } from "src/schemas/users.schema";
 import { UpdateUserDto } from "./dto/updateUser.dto";
+import { UserSettings } from "src/schemas/userSettings.schema";
 
 @Injectable()
 export class UserService {
-    constructor( @InjectModel(User.name) private userModel: Model<User>) {}
+    constructor( @InjectModel(User.name) private userModel: Model<User>, @InjectModel(UserSettings.name) private userSettingsModel: Model<UserSettings>) {}
     
-    createUser({settings, ...createUserDto}: CreateUserDto) {
-        if(settings) {}
+    async createUser({settings, ...createUserDto}: CreateUserDto) {
+        if(settings) {
+            const newSettings = new this.userSettingsModel(settings);
+            const saveNewSettings = await newSettings.save();
+            const newUser = new this.userModel({
+                ...createUserDto,
+                settings: saveNewSettings._id,
+            })
+        }
         const newUser = new this.userModel(createUserDto);
         return newUser.save()
     }
