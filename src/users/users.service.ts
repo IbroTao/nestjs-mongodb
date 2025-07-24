@@ -26,6 +26,10 @@ export class UserService {
         return newUser.save()
     }
 
+    getUserByUsername(username: string) {
+        return this.userModel.findOne({username})
+    }
+
     getUsers() {
         return this.userModel.find()
     }
