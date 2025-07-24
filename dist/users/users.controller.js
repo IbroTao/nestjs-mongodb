@@ -23,6 +23,9 @@ let UserController = class UserController {
     createUser(createUserDto) {
         return this.userService.createUser(createUserDto);
     }
+    getAllUsers() {
+        return this.userService.getUsers();
+    }
 };
 exports.UserController = UserController;
 __decorate([
@@ -33,6 +36,12 @@ __decorate([
     __metadata("design:paramtypes", [users_dto_1.CreateUserDto]),
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "createUser", null);
+__decorate([
+    (0, common_1.Get)('all'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "getAllUsers", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [users_service_1.UserService])
