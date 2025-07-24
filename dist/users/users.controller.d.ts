@@ -29,4 +29,5 @@ export declare class UserController {
     } & {
         __v: number;
     }>;
+    deleteUser(id: string): Promise<void>;
 }

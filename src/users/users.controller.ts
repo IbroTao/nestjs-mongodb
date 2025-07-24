@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier*/
-import { Body, Controller, Post, UsePipes, ValidationPipe, Get, Param, HttpException, Patch } from "@nestjs/common";
+import { Body, Controller, Post, UsePipes, ValidationPipe, Get, Param, HttpException, Patch, Delete } from "@nestjs/common";
 import { UserService } from "./users.service";
 import { CreateUserDto } from "./dto/CreateUser.dto";
 import mongoose from "mongoose";
@@ -39,5 +39,12 @@ export class UserController {
         const updatedUser = this.userService.updateUser(id, updateUserDto);
         if(!updatedUser) throw new HttpException('User not found', 404);
         return updatedUser;
+    }
+
+    @Delete(':id')
+    async deleteUser(@Param('id') id: string) {
+        const isValid = mongoose.Types.ObjectId.isValid(id);
+        if(!isValid) throw new HttpException('User not found', 404);
+        const deletedUser = await this.userService.deleteUser(id);
     }
 }
