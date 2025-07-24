@@ -1,4 +1,4 @@
-export declare class updateUserDto {
+export declare class UpdateUserDto {
     displayName?: string;
     avatarUrl?: string;
 }

@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const users_service_1 = require("./users.service");
 const CreateUser_dto_1 = require("./dto/CreateUser.dto");
 const mongoose_1 = require("mongoose");
+const updateUser_dto_1 = require("./dto/updateUser.dto");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -35,6 +36,12 @@ let UserController = class UserController {
         if (!findUser)
             throw new common_1.HttpException('User not found!', 404);
         return findUser;
+    }
+    updateUser(id, updateUserDto) {
+        const isValid = mongoose_1.default.Types.ObjectId.isValid(id);
+        if (!isValid)
+            throw new common_1.HttpException('Invalid ID', 404);
+        return this.userService.updateUser(id, updateUserDto);
     }
 };
 exports.UserController = UserController;
@@ -61,15 +68,15 @@ __decorate([
 ], UserController.prototype, "fetchUserById", null);
 __decorate([
     (0, common_1.Patch)(':id'),
-    __metadata("design:type", Object)
-], UserController.prototype, "", void 0);
+    (0, common_1.UsePipes)(new common_1.ValidationPipe()),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, updateUser_dto_1.UpdateUserDto]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "updateUser", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [users_service_1.UserService])
 ], UserController);
-{
-    updateUser();
-    {
-    }
-}
 //# sourceMappingURL=users.controller.js.map

@@ -31,6 +31,9 @@ let UserService = class UserService {
     getUserById(id) {
         return this.userModel.findById(id);
     }
+    updateUser(id, updateUserDto) {
+        return this.userModel.findByIdAndUpdate(id, updateUserDto, { new: true });
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([

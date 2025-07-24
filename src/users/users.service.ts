@@ -5,6 +5,7 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { CreateUserDto } from "../users/dto/CreateUser.dto"
 import { User } from "src/schemas/users.schema";
+import { UpdateUserDto } from "./dto/updateUser.dto";
 
 @Injectable()
 export class UserService {
@@ -23,4 +24,7 @@ export class UserService {
         return this.userModel.findById(id);
     }
 
+    updateUser(id: string, updateUserDto: UpdateUserDto) {
+        return this.userModel.findByIdAndUpdate(id, updateUserDto, {new: true})
+    }
 }

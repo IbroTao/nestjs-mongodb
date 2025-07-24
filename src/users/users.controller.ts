@@ -3,6 +3,7 @@ import { Body, Controller, Post, UsePipes, ValidationPipe, Get, Param, HttpExcep
 import { UserService } from "./users.service";
 import { CreateUserDto } from "./dto/CreateUser.dto";
 import mongoose from "mongoose";
+import { UpdateUserDto } from "./dto/updateUser.dto";
 
 @Controller('users')
 export class UserController {
@@ -29,9 +30,11 @@ export class UserController {
         return findUser;
     }
 
-    @Patch(':id') {
-        updateUser() {
-
-        }
+    @Patch(':id') 
+    @UsePipes(new ValidationPipe())
+    updateUser(@Param('id') id:string, @Body() updateUserDto: UpdateUserDto) {
+        const isValid = mongoose.Types.ObjectId.isValid(id);
+        if(!isValid) throw new HttpException('Invalid ID', 404)
+        return this.userService.updateUser(id, updateUserDto);
     }
 }
