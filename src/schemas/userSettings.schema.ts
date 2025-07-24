@@ -14,4 +14,4 @@ export class UserSettings {
     receiveSMS?: boolean;
 }
 
-export const userSettings = SchemaFactory.createForClass(UserSettings);
+export const userSettingsSchema = SchemaFactory.createForClass(UserSettings);
