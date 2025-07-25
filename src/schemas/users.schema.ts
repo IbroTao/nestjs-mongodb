@@ -20,6 +20,7 @@ export class User {
     @Prop({type: mongoose.Types.ObjectId, ref: 'UserSettings'})
     settings?: UserSettings;
 
+    @Prop({tye: mongoose.Types.ObjectId, ref: 'Post'});
     post: Post[];
 }
 

@@ -32,6 +32,10 @@ __decorate([
     (0, mongoose_1.Prop)({ type: mongoose_2.default.Types.ObjectId, ref: 'UserSettings' }),
     __metadata("design:type", userSettings_schema_1.UserSettings)
 ], User.prototype, "settings", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ tye: mongoose_2.default.Types.ObjectId, ref: 'Post' }),
+    __metadata("design:type", Object)
+], User.prototype, "", void 0);
 exports.User = User = __decorate([
     (0, mongoose_1.Schema)()
 ], User);
