@@ -36,11 +36,14 @@ let UserService = class UserService {
         const newUser = new this.userModel(createUserDto);
         return newUser.save();
     }
+    getUserByUsername(username) {
+        return this.userModel.findOne({ username });
+    }
     getUsers() {
         return this.userModel.find();
     }
     getUserById(id) {
-        return this.userModel.findById(id);
+        return this.userModel.findById(id).populate('settings');
     }
     updateUser(id, updateUserDto) {
         return this.userModel.findByIdAndUpdate(id, updateUserDto, { new: true });

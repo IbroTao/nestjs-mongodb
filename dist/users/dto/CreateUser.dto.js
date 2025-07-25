@@ -27,6 +27,7 @@ __decorate([
 ], CreateUserSettingsDto.prototype, "receiveNotifications", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsBoolean)(),
     __metadata("design:type", Boolean)
 ], CreateUserSettingsDto.prototype, "receiveEmails", void 0);
 class CreateUserDto {

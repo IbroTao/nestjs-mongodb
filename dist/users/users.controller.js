@@ -22,7 +22,10 @@ let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
-    createUser(createUserDto) {
+    async createUser(createUserDto) {
+        const existingUser = await this.userService.getUserByUsername(createUserDto.username);
+        if (existingUser)
+            throw new common_1.HttpException('User already exist', 409);
         const newUser = this.userService.createUser(createUserDto);
         if (!newUser)
             throw new common_1.HttpException('Error', 404);
@@ -66,7 +69,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [CreateUser_dto_1.CreateUserDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "createUser", null);
 __decorate([
     (0, common_1.Get)('all'),

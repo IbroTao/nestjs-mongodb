@@ -12,6 +12,15 @@ export declare class UserService {
     } & {
         __v: number;
     }>;
+    getUserByUsername(username: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, User, {}> & User & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v: number;
+    }, import("mongoose").Document<unknown, {}, User, {}> & User & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v: number;
+    }, {}, User, "findOne", {}>;
     getUsers(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, User, {}> & User & {
         _id: import("mongoose").Types.ObjectId;
     } & {

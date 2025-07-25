@@ -13,7 +13,7 @@ export class CreateUserSettingsDto {
     receiveNotifications?: boolean;
 
     @IsOptional()
-    // @IsBoolean()
+    @IsBoolean()
     receiveEmails?: boolean;
 }
 export class CreateUserDto {
