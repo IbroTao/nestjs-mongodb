@@ -31,7 +31,7 @@ export class UserService {
     }
 
     getUsers() {
-        return this.userModel.find()
+        return this.userModel.find().populate('settings')
     }
 
     getUserById(id: string) {

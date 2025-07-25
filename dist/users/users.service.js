@@ -40,7 +40,7 @@ let UserService = class UserService {
         return this.userModel.findOne({ username });
     }
     getUsers() {
-        return this.userModel.find();
+        return this.userModel.find().populate('settings');
     }
     getUserById(id) {
         return this.userModel.findById(id).populate('settings');
