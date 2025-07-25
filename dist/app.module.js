@@ -10,13 +10,14 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const users_module_1 = require("./users/users.module");
+const posts_module_1 = require("./posts/posts.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/nestjs-course'), users_module_1.UserModule
+            mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/nestjs-course'), users_module_1.UserModule, posts_module_1.PostModule
         ],
         controllers: [],
         providers: [],

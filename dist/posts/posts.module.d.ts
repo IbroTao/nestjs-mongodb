@@ -1,2 +1,2 @@
-export declare class PostsModule {
+export declare class PostModule {
 }

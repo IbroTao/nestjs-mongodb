@@ -6,16 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PostsModule = void 0;
+exports.PostModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const Post_schema_1 = require("../schemas/Post.schema");
 const posts_service_1 = require("./posts.service");
 const posts_controller_1 = require("./posts.controller");
-let PostsModule = class PostsModule {
+let PostModule = class PostModule {
 };
-exports.PostsModule = PostsModule;
-exports.PostsModule = PostsModule = __decorate([
+exports.PostModule = PostModule;
+exports.PostModule = PostModule = __decorate([
     (0, common_1.Module)({
         imports: [mongoose_1.MongooseModule.forFeature([
                 {
@@ -26,5 +26,5 @@ exports.PostsModule = PostsModule = __decorate([
         providers: [posts_service_1.PostService],
         controllers: [posts_controller_1.PostController]
     })
-], PostsModule);
+], PostModule);
 //# sourceMappingURL=posts.module.js.map

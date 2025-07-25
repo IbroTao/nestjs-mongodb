@@ -14,4 +14,6 @@ export class PostService {
         const newPost = new this.postModel(createPostDto);
         return newPost.save();
     }
+
+    findPostById() {}
 }
