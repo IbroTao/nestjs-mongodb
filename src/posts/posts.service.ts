@@ -8,7 +8,4 @@ import { Post } from "src/schemas/Post.schema";
 @Injectable()
 export class PostService {
     constructor(@InjectModel(Post.name) private postModel: Model<Post>) {}
-    createPost() {
-        
-    }
 }
