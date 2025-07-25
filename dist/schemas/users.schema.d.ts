@@ -6,7 +6,6 @@ export declare class User {
     displayName?: string;
     avatarUrl?: string;
     settings?: UserSettings;
-    : any;
     post: Post[];
 }
 export declare const UserSchema: mongoose.Schema<User, mongoose.Model<User, any, any, any, mongoose.Document<unknown, any, User, any> & User & {
