@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier*/
 
-import { Prop, Schema } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
 @Schema()
 export class Post {
@@ -10,3 +10,5 @@ export class Post {
     @Prop({required: true})
     contents: string;
 }
+
+export const PostSchema = SchemaFactory.createForClass(Post);

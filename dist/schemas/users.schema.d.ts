@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
 import { UserSettings } from "./userSettings.schema";
+import { Post } from "./Post.schema";
 export declare class User {
     username: string;
     displayName?: string;
     avatarUrl?: string;
     settings?: UserSettings;
+    post: Post[];
 }
 export declare const UserSchema: mongoose.Schema<User, mongoose.Model<User, any, any, any, mongoose.Document<unknown, any, User, any> & User & {
     _id: mongoose.Types.ObjectId;
