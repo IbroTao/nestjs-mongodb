@@ -26,4 +26,9 @@ __decorate([
     (0, class_validator_1.MaxLength)(250),
     __metadata("design:type", String)
 ], CreatePostDto.prototype, "contents", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreatePostDto.prototype, "userId", void 0);
 //# sourceMappingURL=CreatePost.dto.js.map
