@@ -21,7 +21,7 @@ export class User {
     settings?: UserSettings;
 
     @Prop({ type: [{ type: mongoose.Types.ObjectId, ref: 'Post' }] })
-    post: Post[];
+    posts: Post[];
 }
 
 

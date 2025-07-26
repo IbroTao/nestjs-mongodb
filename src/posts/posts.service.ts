@@ -14,16 +14,17 @@ export class PostService {
         @InjectModel(User.name) private userModel: Model<User>
     ) {}
 
-    async createPost( { userId, ...createPostDto }: CreatePostDto) {
+    async createPost({ userId, ...createPostDto }: CreatePostDto) {
+        const isValid = await this.userModel.exists({ _id: userId });
+        if (!isValid) throw new HttpException("Invalid user ID", 400);
         const findUser = await this.userModel.findById(userId);
-        if(!findUser) throw new HttpException("User not found", 404);
+        if (!findUser) throw new HttpException("User not found", 404);
         const newPost = new this.postModel(createPostDto);
         const savedPost = await newPost.save();
-        findUser.updateOne({
-            $push: {
-                posts: savedPost._id
-            }
-        });
+        await this.userModel.findByIdAndUpdate(
+            userId,
+            { $push: { posts: savedPost._id } }
+        );
         return savedPost;
     }
 
