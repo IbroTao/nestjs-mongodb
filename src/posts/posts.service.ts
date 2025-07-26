@@ -14,7 +14,9 @@ export class PostService {
         @InjectModel(User.name) private userModel: Model<User>
     ) {}
 
-    createPost(createPostDto: CreatePostDto) {
+    async createPost( { userId, ...createPostDto }: CreatePostDto) {
+        const findUser = await this.userModel.findById(userId);
+        if(!findUser) return null;
         const newPost = new this.postModel(createPostDto);
         return newPost.save();
     }
