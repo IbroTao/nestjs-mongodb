@@ -12,6 +12,7 @@ const mongoose_1 = require("@nestjs/mongoose");
 const Post_schema_1 = require("../schemas/Post.schema");
 const posts_service_1 = require("./posts.service");
 const posts_controller_1 = require("./posts.controller");
+const users_schema_1 = require("../schemas/users.schema");
 let PostModule = class PostModule {
 };
 exports.PostModule = PostModule;
@@ -21,6 +22,10 @@ exports.PostModule = PostModule = __decorate([
                 {
                     name: Post_schema_1.Post.name,
                     schema: Post_schema_1.PostSchema
+                },
+                {
+                    name: users_schema_1.User.name,
+                    schema: users_schema_1.UserSchema
                 }
             ])],
         providers: [posts_service_1.PostService],
