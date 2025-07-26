@@ -23,7 +23,10 @@ let PostService = class PostService {
         this.postModel = postModel;
         this.userModel = userModel;
     }
-    createPost(createPostDto) {
+    async createPost({ userId, ...createPostDto }) {
+        const findUser = await this.userModel.findById(userId);
+        if (!findUser)
+            throw new common_1.HttpException("User not found", 404);
         const newPost = new this.postModel(createPostDto);
         return newPost.save();
     }

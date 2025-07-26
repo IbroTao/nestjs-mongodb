@@ -6,7 +6,7 @@ export declare class PostService {
     private postModel;
     private userModel;
     constructor(postModel: Model<Post>, userModel: Model<User>);
-    createPost(createPostDto: CreatePostDto): Promise<import("mongoose").Document<unknown, {}, Post, {}> & Post & {
+    createPost({ userId, ...createPostDto }: CreatePostDto): Promise<import("mongoose").Document<unknown, {}, Post, {}> & Post & {
         _id: import("mongoose").Types.ObjectId;
     } & {
         __v: number;
