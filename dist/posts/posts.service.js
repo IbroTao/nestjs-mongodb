@@ -17,9 +17,11 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const Post_schema_1 = require("../schemas/Post.schema");
+const users_schema_1 = require("../schemas/users.schema");
 let PostService = class PostService {
-    constructor(postModel) {
+    constructor(postModel, userModel) {
         this.postModel = postModel;
+        this.userModel = userModel;
     }
     createPost(createPostDto) {
         const newPost = new this.postModel(createPostDto);
@@ -31,6 +33,8 @@ exports.PostService = PostService;
 exports.PostService = PostService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(Post_schema_1.Post.name)),
-    __metadata("design:paramtypes", [mongoose_2.Model])
+    __param(1, (0, mongoose_1.InjectModel)(users_schema_1.User.name)),
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        mongoose_2.Model])
 ], PostService);
 //# sourceMappingURL=posts.service.js.map
