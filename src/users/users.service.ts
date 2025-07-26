@@ -31,10 +31,7 @@ export class UserService {
     }
 
     getUsers() {
-        return this.userModel.find().populate([
-            { path: 'settings' },
-            { path: 'posts' }
-        ])
+        return this.userModel.find().populate(['settings', 'posts']);
     }
 
     getUserById(id: string) {

@@ -21,10 +21,9 @@ export class PostService {
         if (!findUser) throw new HttpException("User not found", 404);
         const newPost = new this.postModel(createPostDto);
         const savedPost = await newPost.save();
-        await this.userModel.findByIdAndUpdate(
-            userId,
-            { $push: { posts: savedPost._id } }
-        );
+        await findUser.updateOne({
+            $push: { posts: savedPost._id } 
+        });
         return savedPost;
     }
 
